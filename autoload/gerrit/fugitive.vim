@@ -25,6 +25,10 @@ function! gerrit#fugitive#url(opts, ...) abort
     return ''
   endtry
 
+  if domain == '' || repo == ''
+    return ''
+  endif
+
   let url  = 'https://' . domain . '/plugins/gitiles/' . repo . '/+/' . commit . '/' . a:opts.path 
 
   if a:opts.line1 > 0
